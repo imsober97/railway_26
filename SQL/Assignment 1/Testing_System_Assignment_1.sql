@@ -65,13 +65,13 @@ CREATE TABLE Exam(
             CreatorID INt,
             CreateDate DATE
 );
+
 CREATE TABLE ExamQuestion(
 			ExamID INT,
             QuestionID INT
 );
-            
-
-            
+		
+     -- done       
             
             
             
