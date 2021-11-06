@@ -1,17 +1,17 @@
-CREATE DATABASE Testing_System_Assignment_1;
-USE Testing_System_Assignment_1;
 
+USE Testing_System_Assignment_1;
+DROP TABLE IF EXISTS Department;
 CREATE TABLE Department(
 			DepartmentID INT,
-            DepartmentSales VARCHAR(40),
-            DepartmentHR VARCHAR(50)
+            DepartmentName ENUM("HR","Sales","Marketing")
 );
+DROP TABLE IF EXISTS `Position`;
 CREATE TABLE  `Position`(
-			PositionID TINYINT,
-            PositionDev VARCHAR(50),
-            PositionPM VARCHAR(50),
-            PositionTester VARCHAR(50)
+			PositionID INT,
+            PositionName ENUM("Dev","Tester","Scrum Master","PM")
+            
 );
+DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account`(
            AccountID INT,
            Email VARCHAR(50),
@@ -21,27 +21,33 @@ CREATE TABLE `Account`(
            PositionID TINYINT,
            CreateDate DATE
 );
+DROP TABLE `Group`;
 CREATE TABLE `Group`(
 			GroupID INT,
 			GroupName VARCHAR(50),
             CreateID INT,
             CreateDate DATE
 );
+
+DROP TABLE GroupAccount;
 CREATE TABLE GroupAccount(
 			GroupID INT,
             AccountID INT,
             Joindate DATE
 );
+DROP TABLE TypeQuestion;
 CREATE TABLE TypeQuestion(
 			TypeID INT,
             TypeEssay VARCHAR(100),
             TypeMutipleChoice VARCHAR(100)
 );
+DROP TABLE CategoryQuestion;
 CREATE TABLE CategoryQuestion(
 			CategoryID INT,
             CategoryJava VARCHAR(100),
             CategoryNET VARCHAR(100)
 );
+DROP TABLE Question;
 CREATE TABLE Question(
 			QuestionID INT,
             Content VARCHAR(1000),
@@ -50,12 +56,14 @@ CREATE TABLE Question(
             CreatorID INT,
             CreateDate DATE
 );
+DROP TABLE Answer;
 CREATE TABLE Answer(
 			AnswerID INT,
             Content VARCHAR(2000),
             QuestionID INT,
-            isCorrect VARCHAR(20)
+            isCorrect ENUM("yes","no")
 );
+DROP TABLE Exam;
 CREATE TABLE Exam(
 			ExamID INT,
             `Code` VARCHAR(15),
@@ -66,6 +74,7 @@ CREATE TABLE Exam(
             CreateDate DATE
 );
 
+DROP TABLE ExamQuestion;
 CREATE TABLE ExamQuestion(
 			ExamID INT,
             QuestionID INT
